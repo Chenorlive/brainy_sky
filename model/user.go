@@ -10,7 +10,7 @@ type User struct {
 	Password    string  `json:"-"`
 	Phone       *string `json:"phone"`
 	LoginHint   *string `json:"login_hint"`
-	DataOfBirth *string `json:"date_of_birth"`
+	DateOfBirth *string `json:"date_of_birth"`
 	Address     *string `json:"address"`
 	Image       *string `json:"image"`
 	IsActive    bool    `json:"is_active"`

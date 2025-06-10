@@ -1,6 +1,9 @@
 package types
 
-import "github.com/gofrs/uuid"
+import (
+	"github.com/Chenorlive/brainy/model"
+	"github.com/gofrs/uuid"
+)
 
 type NewRole struct {
 	Name        string  `json:"name" validate:"required"`
@@ -44,4 +47,9 @@ type UpdateUserRole struct {
 	ID     uuid.UUID  `json:"id" validate:"required"`
 	UserID *uuid.UUID `json:"user_id" validate:"required"`
 	RoleID *uuid.UUID `json:"role_id" validate:"required"`
+}
+
+type UserRoles struct {
+	User *model.User   `json:"user"`
+	Role []*model.Role `json:"role"`
 }

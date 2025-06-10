@@ -7,6 +7,7 @@ import (
 	"github.com/Chenorlive/brainy/middleware"
 	"github.com/Chenorlive/brainy/pkg/auth"
 	"github.com/Chenorlive/brainy/pkg/core/role"
+	"github.com/Chenorlive/brainy/pkg/core/userrole"
 	"github.com/Chenorlive/brainy/pkg/ping"
 
 	"gorm.io/gorm"
@@ -40,10 +41,17 @@ func (s *AIPServer) Run() error {
 	//Authentication router
 	authRouter := http.NewServeMux()
 
-	// core role
+	// core.role
 	roleStore := role.NewStore(s.db)
 	roleHandler := role.NewHander(roleStore)
 	roleHandler.RegisterRoutes(authRouter)
+
+	//core.userRole
+	userRoleStore := userrole.NewStore(s.db)
+	userRoleHandler := userrole.NewHandler(userRoleStore)
+	userRoleHandler.RegisterRoutes(authRouter)
+
+	//userRoleStore.
 
 	// Authentication middleware
 	authRouterWithMiddleware := middleware.AuthMiddleware(authRouter)

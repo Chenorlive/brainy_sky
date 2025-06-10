@@ -3,8 +3,6 @@ package userrole
 import (
 	"net/http"
 
-	"gorm.io/gorm"
-
 	"github.com/Chenorlive/brainy/types"
 	"github.com/Chenorlive/brainy/utils"
 )
@@ -13,9 +11,9 @@ type handler struct {
 	store *Store
 }
 
-func NewHandler(db *gorm.DB) *handler {
+func NewHandler(store *Store) *handler {
 	return &handler{
-		store: NewStore(db),
+		store: store,
 	}
 }
 
